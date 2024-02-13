@@ -160,19 +160,10 @@ class _loginState extends State<login> {
                                 fontSize: (w / 100) * 5,
                                 fontWeight: FontWeight.bold,
                                 decoration: TextDecoration.underline)),
-                        // can add more TextSpans here...
                       ],
                     ),
                   ),
-                )
-                // Text(
-                //   "Doesn't have Account? SignUp",
-                //   textAlign: TextAlign.center,
-                //   style: GoogleFonts.getFont("Gowun Dodum")
-                //       .copyWith(color: const Color.fromARGB(255, 33, 37, 41), fontSize: (w/100)*5, fontWeight: FontWeight.bold, fontStyle: FontStyle),
-                // )
-
-                ))
+                )))
       ]),
     );
   }

@@ -2,6 +2,7 @@ import 'package:dieases_prediction/screens/diabetes.dart';
 import 'package:dieases_prediction/screens/login.dart';
 import 'package:dieases_prediction/routes.dart';
 import 'package:dieases_prediction/screens/outcome.dart';
+import 'package:dieases_prediction/screens/welcome.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,11 +17,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: const login(),
+        home: const welcome(),
         routes: {
           routes.login: (context) => const login(),
           routes.predictDiabetes: (context) => const diabetes(),
-          routes.outcome:(context) => const outcome()
+          routes.outcome:(context) => const outcome(),
+          routes.welcome:(context) => const welcome()
         });
   }
 }
