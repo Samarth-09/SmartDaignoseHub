@@ -1,6 +1,5 @@
 import 'package:dieases_prediction/cubits/login/login_cubit.dart';
 import 'package:dieases_prediction/cubits/login/login_state.dart';
-import 'package:dieases_prediction/globalVariables.dart';
 import 'package:dieases_prediction/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +21,7 @@ class _loginState extends State<login> {
   VideoPlayerController? controller;
   void initState() {
     super.initState();
-    chechTokenPresence();
+    // chechTokenPresence();
     controller = VideoPlayerController.asset("assets/videos/corona.mp4");
     controller!.initialize().then((_) {
       controller!.play();
@@ -171,7 +170,7 @@ class _loginState extends State<login> {
   void getResult(state) async {
     var result = await state.ah.login(state.email, state.pwd);
     if (result) {
-      await Navigator.popAndPushNamed(context, routes.predictDiabetes);
+      await Navigator.popAndPushNamed(context, routes.selectDisease);
     }
     SnackBar s = SnackBar(
         backgroundColor: const Color.fromARGB(255, 206, 212, 218),
@@ -182,11 +181,11 @@ class _loginState extends State<login> {
     ScaffoldMessenger.of(context).showSnackBar(s);
   }
 
-  void chechTokenPresence() async {
-    globalVariables.setToken().then((value) async {
-      if (globalVariables.token != "") {
-        await Navigator.popAndPushNamed(context, routes.predictDiabetes);
-      }
-    });
-  }
+  // void chechTokenPresence() async {
+  //   globalVariables.setToken().then((value) async {
+  //     if (globalVariables.token != "") {
+  //       await Navigator.popAndPushNamed(context, routes.selectDisease);
+  //     }
+  //   });
+  // }
 }

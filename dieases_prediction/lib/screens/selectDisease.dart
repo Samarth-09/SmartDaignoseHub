@@ -57,7 +57,7 @@ class _selectDiseaseState extends State<selectDisease> {
                               style: GoogleFonts.getFont("Gowun Dodum")
                                   .copyWith(
                                       color: const Color.fromARGB(
-                                          170, 233, 236, 239),
+                                          200, 233, 236, 239),
                                       fontSize: (w / 100) * 5,
                                       fontWeight: FontWeight.bold,
                                       fontStyle: FontStyle.normal))
