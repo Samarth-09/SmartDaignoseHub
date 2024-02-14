@@ -3,4 +3,5 @@ class routes{
   static String predictDiabetes= '/diabetes.dart';
   static String outcome = '/outcome.dart';
   static String welcome = '/welcome.dart';
+  static String selectDisease = '/selectDisease.dart';
 }

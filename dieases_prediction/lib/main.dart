@@ -2,6 +2,7 @@ import 'package:dieases_prediction/screens/diabetes.dart';
 import 'package:dieases_prediction/screens/login.dart';
 import 'package:dieases_prediction/routes.dart';
 import 'package:dieases_prediction/screens/outcome.dart';
+import 'package:dieases_prediction/screens/selectDisease.dart';
 import 'package:dieases_prediction/screens/welcome.dart';
 import 'package:flutter/material.dart';
 
@@ -21,8 +22,9 @@ class MyApp extends StatelessWidget {
         routes: {
           routes.login: (context) => const login(),
           routes.predictDiabetes: (context) => const diabetes(),
-          routes.outcome:(context) => const outcome(),
-          routes.welcome:(context) => const welcome()
+          routes.outcome: (context) => const outcome(),
+          routes.welcome: (context) => const welcome(),
+          routes.selectDisease: (context) => const selectDisease()
         });
   }
 }
