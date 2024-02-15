@@ -68,64 +68,15 @@ class _welcomeState extends State<welcome> {
                       )),
                 ),
                 InkWell(
-                  onTap: () {},
-                  child: Container(
-                      margin: EdgeInsets.only(bottom: (h / 100) * 8),
-                      width: w * 0.8,
-                      decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 222, 226, 230),
-                          borderRadius: BorderRadius.circular(10)),
-                      padding: EdgeInsets.all(10),
-                      child: Text(
-                        "Disease Desciption",
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.getFont("Gowun Dodum").copyWith(
-                            color: const Color.fromARGB(255, 33, 37, 41),
-                            fontSize: (w / 100) * 5,
-                            fontWeight: FontWeight.bold),
-                      )),
-                ),
-                // Container(
-                //     margin: EdgeInsets.only(right: (w/100) *2),
-                //     width: w,
-                //     alignment: Alignment.bottomRight,
-                //     child: InkWell(
-                //       onTap: () async {
-                //         // if(globalVariables.token == "")
-                //         // {
-                //         //   await Navigator.pushNamed(context, routes.login);
-                //         // }
-                //         // else{
-                //           await Navigator.pushNamed(context, routes.selectDisease);
-                //         //}
-                //       },
-                //       child: Container(
-                //           width: w * 0.4,
-                //           decoration: BoxDecoration(
-                //               color: Color.fromARGB(255, 222, 226, 230),
-                //               borderRadius: BorderRadius.circular(10)),
-                //           padding: EdgeInsets.all(10),
-                //           child: Text(
-                //             "Diagnose",
-                //             textAlign: TextAlign.center,
-                //             style: GoogleFonts.getFont("Gowun Dodum").copyWith(
-                //                 color: const Color.fromARGB(255, 33, 37, 41),
-                //                 fontSize: (w / 100) * 5,
-                //                 fontWeight: FontWeight.bold),
-                //           )),
-                //     ))
-
-                InkWell(
                   onTap: () async {
-                    if(globalVariables.token == "")
-                    {
+                    if (globalVariables.token == "") {
                       await Navigator.pushNamed(context, routes.login);
-                    }
-                    else{
-                    await Navigator.pushNamed(context, routes.selectDisease);
+                    } else {
+                      await Navigator.pushNamed(context, routes.selectDisease);
                     }
                   },
                   child: Container(
+                    margin: EdgeInsets.only(bottom: (h / 100) * 8),
                       width: w * 0.8,
                       decoration: BoxDecoration(
                           color: Color.fromARGB(255, 222, 226, 230),
@@ -133,6 +84,27 @@ class _welcomeState extends State<welcome> {
                       padding: EdgeInsets.all(10),
                       child: Text(
                         "Diagnose",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.getFont("Gowun Dodum").copyWith(
+                            color: const Color.fromARGB(255, 33, 37, 41),
+                            fontSize: (w / 100) * 5,
+                            fontWeight: FontWeight.bold),
+                      )),
+                ),
+                InkWell(
+                  onTap: () async {
+                    await Navigator.pushNamed(
+                        context, routes.diseaseDescreption);
+                  },
+                  child: Container(
+                      margin: EdgeInsets.only(bottom: (h / 100) * 2),
+                      width: w * 0.8,
+                      decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 222, 226, 230),
+                          borderRadius: BorderRadius.circular(10)),
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        "Disease Desciption",
                         textAlign: TextAlign.center,
                         style: GoogleFonts.getFont("Gowun Dodum").copyWith(
                             color: const Color.fromARGB(255, 33, 37, 41),
