@@ -1,3 +1,5 @@
+import 'package:dieases_prediction/routes.dart';
+import 'package:dieases_prediction/screens/solution.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -70,7 +72,14 @@ class _outcomeState extends State<outcome> {
                 Container(
                     child: (outcome.result != 0)
                         ? InkWell(
-                            onTap: () {},
+                            onTap: () async {
+                              await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        solution(disease: outcome.dieasesName),
+                                  ));
+                            },
                             child: Container(
                               width: w * 0.8,
                               padding: EdgeInsets.all(10),
@@ -111,7 +120,7 @@ class _outcomeState extends State<outcome> {
                     }
                   },
                   child: Container(
-                    width: w*0.9,
+                    width: w * 0.9,
                     margin: EdgeInsets.only(top: (h / 100) * 5),
                     child: Text(
                       "Link 1",
@@ -134,7 +143,7 @@ class _outcomeState extends State<outcome> {
                     }
                   },
                   child: Container(
-                    width: w*0.9,
+                    width: w * 0.9,
                     margin: EdgeInsets.only(top: (h / 100) * 3),
                     child: Text(
                       "Link 2",
@@ -157,7 +166,7 @@ class _outcomeState extends State<outcome> {
                     }
                   },
                   child: Container(
-                    width: w*0.9,
+                    width: w * 0.9,
                     margin: EdgeInsets.only(top: (h / 100) * 3),
                     child: Text(
                       "Link 3",
