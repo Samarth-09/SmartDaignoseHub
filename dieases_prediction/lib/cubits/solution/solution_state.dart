@@ -24,6 +24,7 @@ class solutionStateLoaded extends solutionnState {
       textSol.add(
           "Monitor Blood Sugar Levels: Regularly monitor blood sugar levels as advised by healthcare professionals. Adjust diet and medication based on blood sugar readings.");
     } else if (disease == "Heart Disease") {
+      
     } else if (disease == "Parkinson") {}
   }
 }

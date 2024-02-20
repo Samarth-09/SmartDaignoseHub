@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:video_player/video_player.dart';
 import 'package:dieases_prediction/widgets.dart';
+import "package:dieases_prediction/globalVariables.dart";
 // import 'package:http/http.dart' as http;
 
 class login extends StatefulWidget {
@@ -21,7 +22,7 @@ class _loginState extends State<login> {
   VideoPlayerController? controller;
   void initState() {
     super.initState();
-    // chechTokenPresence();
+    chechTokenPresence();
     controller = VideoPlayerController.asset("assets/videos/corona.mp4");
     controller!.initialize().then((_) {
       controller!.play();
@@ -181,11 +182,11 @@ class _loginState extends State<login> {
     ScaffoldMessenger.of(context).showSnackBar(s);
   }
 
-  // void chechTokenPresence() async {
-  //   globalVariables.setToken().then((value) async {
-  //     if (globalVariables.token != "") {
-  //       await Navigator.popAndPushNamed(context, routes.selectDisease);
-  //     }
-  //   });
-  // }
+  void chechTokenPresence() async {
+    globalVariables.setToken().then((value) async {
+      if (globalVariables.token != "") {
+        await Navigator.popAndPushNamed(context, routes.selectDisease);
+      }
+    });
+  }
 }

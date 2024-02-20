@@ -36,15 +36,17 @@ class _diabetesState extends State<diabetes> {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  widgets.myInputField(w * 0.9, w, "Pregnancies", "3.168693", t[0], null),
+                  widgets.myInputField(
+                      w * 0.9, w, "Pregnancies", "3.168693", t[0], null),
                   SizedBox(
                       width: w * 0.9,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          widgets.myInputField(w * 0.4, w, "Glucose", "110.586626", t[1], null),
                           widgets.myInputField(
-                              w * 0.4, w, "BloodPressure", "68.094985", t[2], null)
+                              w * 0.4, w, "Glucose", "110.586626", t[1], null),
+                          widgets.myInputField(w * 0.4, w, "BloodPressure",
+                              "68.094985", t[2], null)
                         ],
                       )),
                   SizedBox(
@@ -52,9 +54,10 @@ class _diabetesState extends State<diabetes> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          widgets.myInputField(w * 0.4, w, "SkinThickness",
+                              "20.052432", t[3], null),
                           widgets.myInputField(
-                              w * 0.4, w, "SkinThickness", "20.052432", t[3], null),
-                          widgets.myInputField(w * 0.4, w, "Insulin", "70.563830", t[4], null)
+                              w * 0.4, w, "Insulin", "70.563830", t[4], null)
                         ],
                       )),
                   SizedBox(
@@ -62,9 +65,15 @@ class _diabetesState extends State<diabetes> {
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            widgets.myInputField(w * 0.4, w, "BMI", "30.567477", t[5], null),
-                            widgets.myInputField(w * 0.4, w, "DiabetesPedigreeFunction",
-                                "0.434676", t[6], null)
+                            widgets.myInputField(
+                                w * 0.4, w, "BMI", "30.567477", t[5], null),
+                            widgets.myInputField(
+                                w * 0.4,
+                                w,
+                                "DiabetesPedigreeFunction",
+                                "0.434676",
+                                t[6],
+                                null)
                           ])),
                   widgets.myInputField(w * 0.9, w, "Age", "31", t[7], null),
                   BlocProvider(
@@ -92,7 +101,8 @@ class _diabetesState extends State<diabetes> {
                               "Submit",
                               style: GoogleFonts.getFont("Gowun Dodum")
                                   .copyWith(
-                                      color: const Color.fromARGB(255, 33, 37, 41),
+                                      color:
+                                          const Color.fromARGB(255, 33, 37, 41),
                                       fontSize: (w / 100) * 8),
                             ),
                           ),
@@ -115,9 +125,8 @@ class _diabetesState extends State<diabetes> {
                 ])));
   }
 
-  void getResult(state) async
-  {
+  void getResult(state) async {
     outcome.result = await state.ah.predictDiabetes(state.l);
-    await Navigator.pushNamed(context, routes.outcome);
+    await Navigator.popAndPushNamed(context, routes.outcome);
   }
 }
