@@ -90,18 +90,54 @@ class _solutionState extends State<solution> {
                                               : const Color.fromARGB(
                                                   170, 222, 226, 230),
                                         ),
-                                        // subtitle: Container(
-                                        //   margin:
-                                        //       EdgeInsets.only(top: h / 100) * 5,
-                                        //   child: Divider(
-                                        //       color: (index % 2 == 0)
-                                        //           ? const Color.fromARGB(
-                                        //               120, 33, 37, 41)
-                                        //           : const Color.fromARGB(
-                                        //               120, 222, 226, 230)),
-                                        // ),
                                         title: Text(
                                           state.textSol[index],
+                                          style: GoogleFonts.getFont(
+                                                  "Gowun Dodum")
+                                              .copyWith(
+                                                  color: (index % 2 == 0)
+                                                      ? const Color.fromARGB(
+                                                          255, 33, 37, 41)
+                                                      : const Color.fromARGB(
+                                                          255, 222, 226, 230),
+                                                  fontSize: (w / 100) * 5.5),
+                                        )));
+                              },
+                            ),
+                            Container(
+                                margin: EdgeInsets.only(top: (h / 100) * 4),
+                                child: Text(
+                                  "Diet Charts",
+                                  style: GoogleFonts.getFont("Gowun Dodum")
+                                      .copyWith(
+                                          color: const Color.fromARGB(
+                                              255, 222, 226, 230),
+                                          fontSize: (w / 100) * 7,
+                                          fontWeight: FontWeight.bold),
+                                )),
+                            ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: state.dietCharts.length,
+                              itemBuilder: (context, index) {
+                                return Container(
+                                    color: (index % 2 == 0)
+                                        ? const Color.fromARGB(
+                                            255, 222, 226, 230)
+                                        : const Color.fromARGB(255, 33, 37, 41),
+                                    margin: EdgeInsets.only(top: (h / 100) * 3),
+                                    child: ListTile(
+                                        leading: Icon(
+                                          Icons.arrow_forward_rounded,
+                                          size: (h / 100) * 2,
+                                          color: (index % 2 == 0)
+                                              ? const Color.fromARGB(
+                                                  170, 33, 37, 41)
+                                              : const Color.fromARGB(
+                                                  170, 222, 226, 230),
+                                        ),
+                                        title: Text(
+                                          state.dietCharts[index],
                                           style: GoogleFonts.getFont(
                                                   "Gowun Dodum")
                                               .copyWith(
