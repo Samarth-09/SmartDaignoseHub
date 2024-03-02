@@ -6,6 +6,7 @@ import {
   checkToken,
   getData,
 } from "../authentication/jwtHandler.js";
+import { updateUser } from "../mongo/mongoApi.js";
 const router = express.Router();
 const baseUrl = "http://127.0.0.1:5000";
 router.post("/diabetes", async (req, res) => {
@@ -17,15 +18,26 @@ router.post("/diabetes", async (req, res) => {
         const response = await axios.post(`${baseUrl}/diabetes`, {
           values: values,
         });
-        res.json(response.data);
+        if (
+          await updateUser({
+            email: await getData(token).email,
+            name: "Diabetes",
+            values: values,
+            output: response.data.outcome,
+          })
+        ) {
+          res.json(response.data);
+        } else {
+          res.json({ outcome: -1 });
+        }
       } catch (e) {
-        res.json({ outcome: -1 });
+        res.json({ outcome: -2 });
       }
     } else {
-      res.json({ outcome: -1 });
+      res.json({ outcome: -3 });
     }
   } else {
-    res.json({ outcome: -2 });
+    res.json({ outcome: -4 });
   }
 });
 
@@ -38,7 +50,18 @@ router.post("/heartDieases", async (req, res) => {
         const response = await axios.post(`${baseUrl}/heartDieases`, {
           values: values,
         });
-        res.json(response.data);
+        if (
+          await updateUser({
+            email: await getData(token).email,
+            name: "Heart Disease",
+            values: values,
+            output: response.data.outcome,
+          })
+        ) {
+          res.json(response.data);
+        } else {
+          res.json({ outcome: -1 });
+        }
       } catch (e) {
         res.json({ outcome: -1 });
       }
@@ -59,7 +82,18 @@ router.post("/parkinson", async (req, res) => {
         const response = await axios.post(`${baseUrl}/parkinson`, {
           values: values,
         });
-        res.json(response.data);
+        if (
+          await updateUser({
+            email: await getData(token).email,
+            name: "Parkinson",
+            values: values,
+            output: response.data.outcome,
+          })
+        ) {
+          res.json(response.data);
+        } else {
+          res.json({ outcome: -1 });
+        }
       } catch (e) {
         res.json({ outcome: -1 });
       }

@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-import userModel from "../Data_Model/user.js";
+import userModel, { diseaseModel } from "../Data_Model/user.js";
+
 async function saveUser(data) {
   try {
     const user = new userModel({
@@ -38,6 +39,24 @@ async function readUser(e) {
 
 async function deleteUser(user) {}
 
-async function updateUser(user) {}
+async function updateUser(data) {
+  try {
+    const newDisease = new diseaseModel({
+      name: data.name,
+      dateOfCheck: "",
+      reportValues: data.values,
+      output: data.output == 1 ? true : false,
+    });
+    newDisease.setDate();
+    await userModel.updateOne(
+      { email: data.email },
+      { $push: { dieseasesHistory: newDisease } }
+    );
+    return true;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+}
 
 export { saveUser, readUser, deleteUser, updateUser };

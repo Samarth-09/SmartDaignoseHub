@@ -28,13 +28,17 @@ const userSchema = new mongoose.Schema({
   rating: Number,
   dieseasesHistory: [diseaseSchema],
 });
-
-userSchema.methods.setDate = {
+// diseaseSchema.methods.setDate = function () {
+//   this.dateOfCheck = new Date().toISOString().slice(0, 10);
+// };
+diseaseSchema.methods = {
   setDate: function () {
     this.dateOfCheck = new Date().toISOString().slice(0, 10);
   },
 };
 
 const userModel = mongoose.model("users", userSchema);
+const diseaseModel = mongoose.model("diseases", diseaseSchema);
 
 export default userModel;
+export { diseaseModel };
