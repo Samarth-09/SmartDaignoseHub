@@ -23,7 +23,7 @@ class _selectDiseaseState extends State<selectDisease> {
         fit: BoxFit.cover,
       ),
       Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           width: w,
           height: h,
           color: const Color.fromARGB(220, 52, 58, 64),
@@ -82,7 +82,7 @@ class _selectDiseaseState extends State<selectDisease> {
                         margin: EdgeInsets.only(top: (h / 100) * 5),
                         alignment: Alignment.center,
                         width: w * 0.6,
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 233, 236, 239),
                             borderRadius: BorderRadius.circular(20)),
@@ -100,7 +100,7 @@ class _selectDiseaseState extends State<selectDisease> {
                         margin: EdgeInsets.only(top: (h / 100) * 5),
                         alignment: Alignment.center,
                         width: w * 0.6,
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 233, 236, 239),
                             borderRadius: BorderRadius.circular(20)),
@@ -118,7 +118,7 @@ class _selectDiseaseState extends State<selectDisease> {
                         margin: EdgeInsets.only(top: (h / 100) * 5),
                         alignment: Alignment.center,
                         width: w * 0.6,
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 233, 236, 239),
                             borderRadius: BorderRadius.circular(20)),

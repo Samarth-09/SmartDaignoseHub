@@ -16,15 +16,15 @@ class _diseaseDescreptionState extends State<diseaseDescreption> {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
-              color: Color.fromARGB(255, 222, 226, 230), size: (w / 100) * 6),
-          backgroundColor: Color.fromARGB(255, 33, 37, 41),
+              color: const Color.fromARGB(255, 222, 226, 230), size: (w / 100) * 6),
+          backgroundColor: const Color.fromARGB(255, 33, 37, 41),
         ),
         drawer: Drawer(
-            backgroundColor: Color.fromARGB(255, 52, 58, 64),
+            backgroundColor: const Color.fromARGB(255, 52, 58, 64),
             // elevation: 10,
-            child: ListView(children: [])),
+            child: ListView(children: const [])),
         body: Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
             width: w,
             height: h,
@@ -90,7 +90,7 @@ class _diseaseDescreptionState extends State<diseaseDescreption> {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(left: 10),
+            padding: const EdgeInsets.only(left: 10),
             margin: EdgeInsets.only(bottom: (h / 100) * 2),
             child: Text(
               name,
@@ -101,7 +101,7 @@ class _diseaseDescreptionState extends State<diseaseDescreption> {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(right: 10, bottom: 10, left: 10),
+            padding: const EdgeInsets.only(right: 10, bottom: 10, left: 10),
             width: w * 0.9,
             height: h * 0.2,
             child: ListView(children: [
@@ -123,7 +123,7 @@ class _diseaseDescreptionState extends State<diseaseDescreption> {
                       decoration: BoxDecoration(
                           color: const Color.fromARGB(255, 33, 37, 41),
                           borderRadius: BorderRadius.circular(15)),
-                      padding: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
                       child: Text(
                         "more details->",
                         style: GoogleFonts.getFont("Gowun Dodum").copyWith(

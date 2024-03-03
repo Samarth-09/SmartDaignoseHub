@@ -1,9 +1,7 @@
-import 'package:dieases_prediction/routes.dart';
 import 'package:dieases_prediction/screens/solution.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter/services.dart';
 
 class outcome extends StatefulWidget {
   static int result = 0;
@@ -28,7 +26,7 @@ class _outcomeState extends State<outcome> {
         fit: BoxFit.cover,
       ),
       Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           width: w,
           height: h,
           color: const Color.fromARGB(220, 52, 58, 64),
@@ -82,7 +80,7 @@ class _outcomeState extends State<outcome> {
                             },
                             child: Container(
                               width: w * 0.8,
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               margin: EdgeInsets.only(top: (h / 100) * 5),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),

@@ -22,13 +22,13 @@ class _solutionState extends State<solution> {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
-              color: Color.fromARGB(255, 222, 226, 230), size: (w / 100) * 6),
-          backgroundColor: Color.fromARGB(255, 33, 37, 41),
+              color: const Color.fromARGB(255, 222, 226, 230), size: (w / 100) * 6),
+          backgroundColor: const Color.fromARGB(255, 33, 37, 41),
         ),
         drawer: Drawer(
-            backgroundColor: Color.fromARGB(255, 52, 58, 64),
+            backgroundColor: const Color.fromARGB(255, 52, 58, 64),
             // elevation: 10,
-            child: ListView(children: [])),
+            child: ListView(children: const [])),
         body: Container(
           child: BlocProvider(
               create: (context) => solutionCubit(),
@@ -37,7 +37,7 @@ class _solutionState extends State<solution> {
                 //context.read()... should be used inside a widget that is the child of the builder
                 if (state is solutionStateLoaded) {
                   return Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       alignment: Alignment.center,
                       width: w,
                       height: h,

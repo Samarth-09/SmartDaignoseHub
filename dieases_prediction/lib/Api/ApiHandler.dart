@@ -1,3 +1,5 @@
+import "package:dieases_prediction/Model/disease.dart";
+import "package:dieases_prediction/Model/user.dart";
 import "package:dieases_prediction/globalVariables.dart";
 import "package:dio/dio.dart";
 
@@ -27,5 +29,22 @@ class ApiHandler {
     } else {
       return res.data['msg'];
     }
+  }
+
+  Future<user> getInfo() async {
+    var res = await Dio().get("$baseUrl/user/info",
+        options: Options(
+            headers: (globalVariables.token != "")
+                ? {"authorization": "Bearer ${globalVariables.token}"}
+                : {
+                    "authorization":
+                        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbUBnbWFpbC5jb20iLCJpYXQiOjE3MDkzNjQxMTF9.7O8GdIsqRvM8XFnZ3CoY2yFVb1cpcLz2rsY2Na1kiAc"
+                  }));
+    // print(res.data['dieseasesHistory']['dateOfCheck']);
+    List<disease> l = List.generate(res.data['dieseasesHistory'].length,
+        (index) => disease.fromJson(res.data['dieseasesHistory'][index]));
+        print(l);
+    return user(
+        uname: res.data['uname'], email: res.data['email'], diseaseHistory: l);
   }
 }

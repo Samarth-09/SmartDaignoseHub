@@ -20,6 +20,7 @@ class _loginState extends State<login> {
   TextEditingController email = TextEditingController();
   TextEditingController pwd = TextEditingController();
   VideoPlayerController? controller;
+  @override
   void initState() {
     super.initState();
     chechTokenPresence();
@@ -69,7 +70,7 @@ class _loginState extends State<login> {
                         "abc@gmail.com",
                         email,
                         Icon(Icons.person_2_outlined,
-                            color: Color.fromARGB(255, 233, 236, 239),
+                            color: const Color.fromARGB(255, 233, 236, 239),
                             size: (w / 100) * 7)),
                   ),
                   Container(
@@ -81,7 +82,7 @@ class _loginState extends State<login> {
                         "123456",
                         pwd,
                         Icon(Icons.password_outlined,
-                            color: Color.fromARGB(255, 233, 236, 239),
+                            color: const Color.fromARGB(255, 233, 236, 239),
                             size: (w / 100) * 7)),
                   ),
                   Container(

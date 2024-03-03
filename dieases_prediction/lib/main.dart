@@ -5,6 +5,7 @@ import 'package:dieases_prediction/routes.dart';
 import 'package:dieases_prediction/screens/outcome.dart';
 import 'package:dieases_prediction/screens/selectDisease.dart';
 import 'package:dieases_prediction/screens/solution.dart';
+import 'package:dieases_prediction/screens/userProfile.dart';
 import 'package:dieases_prediction/screens/welcome.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
           routes.welcome: (context) => const welcome(),
           routes.selectDisease: (context) => const selectDisease(),
           routes.diseaseDescreption:(context) => const diseaseDescreption(),
-          routes.solution:(context) => solution(disease: "Diabetes")
+          routes.solution:(context) => solution(disease: "Diabetes"),
+          routes.userProfile:(context) => const userProfile()
         });
   }
 }

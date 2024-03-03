@@ -14,7 +14,7 @@ class loginStateFilling extends loginState{}
 class loginStateSubmitted extends loginState{
   final String? email;
   final String? pwd;
-  ApiHandler ah = new ApiHandler();
+  ApiHandler ah = ApiHandler();
   loginStateSubmitted({this.email, this.pwd});
 }
 

@@ -6,4 +6,5 @@ class routes{
   static String selectDisease = '/selectDisease.dart';
   static String diseaseDescreption = "/diseaseDescreption.dart";
   static String solution = "/solution.dart";
+  static String userProfile = "/userProfile.dart";
 }

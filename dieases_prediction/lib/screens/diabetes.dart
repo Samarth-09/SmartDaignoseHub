@@ -29,6 +29,7 @@ class _diabetesState extends State<diabetes> {
     t.add(TextEditingController());
     t.add(TextEditingController());
     return Scaffold(
+      resizeToAvoidBottomInset: false,
         body: Container(
             width: w,
             height: h,
