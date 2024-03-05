@@ -15,7 +15,7 @@ const router = Express.Router();
 let currentUser = null;
 router.get("/login", async (req, res) => {
   if (req.headers.authorization != null) {
-    var token =  req.headers.authorization.split(" ")[1];
+    var token = req.headers.authorization.split(" ")[1];
     if (checkToken(token)) {
       currentUser = await readUser(getData(token).email);
       res.json({ msg: true });
@@ -24,7 +24,7 @@ router.get("/login", async (req, res) => {
     }
   } else {
     const userData = {
-      email: req.query.email
+      email: req.query.email,
     };
     generateToken(userData);
     const token = getToken();
@@ -33,11 +33,9 @@ router.get("/login", async (req, res) => {
     if (checkToken(token)) {
       const user = await readUser(userData.email);
       if (user != null) {
-        if(user.pwd == req.query.pwd)
-        {
+        if (user.pwd == req.query.pwd) {
           res.json({ msg: token });
-        }
-        else{
+        } else {
           res.json({ msg: false });
         }
       } else {
@@ -49,36 +47,40 @@ router.get("/login", async (req, res) => {
   }
 });
 
-router.get('/signup', async (req, res) => {
+router.get("/signup", async (req, res) => {
   const userData = {
     email: req.query.email,
   };
   // console.log(userData);
   generateToken(userData);
-    const token = getToken();
+  const token = getToken();
+  if (checkToken(token)) {
+    const result = await saveUser(userData);
+    //console.log(result);
+    if (result) {
+      currentUser = result;
+      res.json(result);
+    } else {
+      res.json({ msg: false });
+    }
+  } else {
+    res.json({ msg: false });
+  }
+});
+
+router.get("/info", async (req, res) => {
+  if (req.headers.authorization != null) {
+    var token = req.headers.authorization.split(" ")[1];
     if (checkToken(token)) {
-      const result = await saveUser(userData);
-      //console.log(result);
-      if (result) {
-        currentUser = result;
-        res.json(result);
+      const user = await readUser(getData(token).email);
+      if (user != null) {
+        currentUser = user;
+        res.json(user);
       } else {
         res.json({ msg: false });
       }
     } else {
       res.json({ msg: false });
-    }
-});
-
-router.get("/info", async (req, res) => {
-  var token =  req.headers.authorization.split(" ")[1];
-  if (checkToken(token)) {
-    const user = await readUser(getData(token).email);
-    if (user != null) {
-      currentUser = user;
-      res.json(user);
-    } else {
-      res.json({ msg: false});
     }
   } else {
     res.json({ msg: false });

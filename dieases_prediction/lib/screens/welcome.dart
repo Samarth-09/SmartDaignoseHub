@@ -1,3 +1,4 @@
+import 'package:dieases_prediction/commonWidgets.dart';
 import 'package:dieases_prediction/globalVariables.dart';
 import 'package:dieases_prediction/routes.dart';
 import 'package:flutter/material.dart';
@@ -16,21 +17,14 @@ class _welcomeState extends State<welcome> {
     double w = MediaQuery.of(context).size.width,
         h = MediaQuery.of(context).size.height;
     return Scaffold(
-        appBar: AppBar(
-          iconTheme: IconThemeData(
-              color: const Color.fromARGB(255, 222, 226, 230), size: (w / 100) * 6),
-          backgroundColor: const Color.fromARGB(255, 33, 37, 41),
-        ),
-        drawer: Drawer(
-            backgroundColor: const Color.fromARGB(255, 52, 58, 64),
-            // elevation: 10,
-            child: ListView(children: const [])),
+        appBar: commonWidgets.appBar(w),
+        drawer: commonWidgets.drawer(w, h),
         body: Container(
           padding: const EdgeInsets.all(10),
           alignment: Alignment.center,
           width: w,
           height: h,
-          color: const Color.fromARGB(255, 33, 37, 41),
+          color: globalVariables.dark1,
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -39,7 +33,7 @@ class _welcomeState extends State<welcome> {
                   child: Text(
                     "WELCOME..!",
                     style: GoogleFonts.getFont("Gowun Dodum").copyWith(
-                        color: const Color.fromARGB(255, 222, 226, 230),
+                        color: globalVariables.light1,
                         fontSize: (w / 100) * 10,
                         fontWeight: FontWeight.bold),
                   ),
@@ -63,30 +57,31 @@ class _welcomeState extends State<welcome> {
                   child: Text(
                       "We're here to empower you with valuable insights into you health. Get ready to embark on a journey of productive wellness management. Let's predict and prevent together!",
                       style: GoogleFonts.getFont("Gowun Dodum").copyWith(
-                        color: const Color.fromARGB(255, 222, 226, 230),
+                        color: globalVariables.light1,
                         fontSize: (w / 100) * 4,
                       )),
                 ),
                 InkWell(
                   onTap: () async {
-                    if (globalVariables.token == "") {
+                    var r = await globalVariables.chechTokenPresence(context);
+                    if (r == 1) {
                       await Navigator.pushNamed(context, routes.login);
                     } else {
                       await Navigator.pushNamed(context, routes.selectDisease);
                     }
                   },
                   child: Container(
-                    margin: EdgeInsets.only(bottom: (h / 100) * 8),
+                      margin: EdgeInsets.only(bottom: (h / 100) * 8),
                       width: w * 0.8,
                       decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 222, 226, 230),
+                          color: globalVariables.light1,
                           borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(10),
                       child: Text(
                         "Diagnose",
                         textAlign: TextAlign.center,
                         style: GoogleFonts.getFont("Gowun Dodum").copyWith(
-                            color: const Color.fromARGB(255, 33, 37, 41),
+                            color: globalVariables.dark1,
                             fontSize: (w / 100) * 5,
                             fontWeight: FontWeight.bold),
                       )),
@@ -100,14 +95,14 @@ class _welcomeState extends State<welcome> {
                       margin: EdgeInsets.only(bottom: (h / 100) * 2),
                       width: w * 0.8,
                       decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 222, 226, 230),
+                          color: globalVariables.light1,
                           borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(10),
                       child: Text(
                         "Disease Desciption",
                         textAlign: TextAlign.center,
                         style: GoogleFonts.getFont("Gowun Dodum").copyWith(
-                            color: const Color.fromARGB(255, 33, 37, 41),
+                            color: globalVariables.dark1,
                             fontSize: (w / 100) * 5,
                             fontWeight: FontWeight.bold),
                       )),

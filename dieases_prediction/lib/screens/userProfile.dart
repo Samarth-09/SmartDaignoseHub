@@ -1,5 +1,7 @@
+import 'package:dieases_prediction/commonWidgets.dart';
 import 'package:dieases_prediction/cubits/userProfile/userProfileCubit.dart';
 import 'package:dieases_prediction/cubits/userProfile/userProfileState.dart';
+import 'package:dieases_prediction/globalVariables.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,35 +19,24 @@ class _userProfileState extends State<userProfile> {
     double w = MediaQuery.of(context).size.width,
         h = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        iconTheme: IconThemeData(
-            color: const Color.fromARGB(255, 222, 226, 230),
-            size: (w / 100) * 6),
-        backgroundColor: const Color.fromARGB(255, 33, 37, 41),
-      ),
-      drawer: Drawer(
-          backgroundColor: const Color.fromARGB(255, 52, 58, 64),
-          // elevation: 10,
-          child: ListView(children: const [])),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   // type: BottomNavigationBarType.shifting,
-      //     elevation: 10,
-      //     backgroundColor: const Color.fromARGB(255, 222, 226, 230),
-      //     items: [
-      //       BottomNavigationBarItem(
-      //           label: 'Profile',
-      //           //backgroundColor: Colors.amber,
-      //           activeIcon: Icon(Icons.person_2_outlined,
-      //               size: (w / 100) * 8,
-      //               color: const Color.fromARGB(255, 33, 37, 41)),
-      //           icon: Icon(Icons.person_2_outlined,
-      //               color: const Color.fromARGB(255, 33, 37, 41))),
-      //       BottomNavigationBarItem(
-      //           label: 'Profile',
-      //           icon: Icon(Icons.check,
-      //               color: const Color.fromARGB(255, 33, 37, 41)))
-      //     ]),
+      appBar: commonWidgets.appBar(w),
+      drawer: commonWidgets.drawer(w, h),
+      bottomNavigationBar: BottomNavigationBar(
+          // type: BottomNavigationBarType.shifting,
+          elevation: 10,
+          backgroundColor: globalVariables.light1,
+          items: [
+            BottomNavigationBarItem(
+                label: 'Profile',
+                //backgroundColor: Colors.amber,
+                activeIcon: Icon(Icons.person_2_outlined,
+                    size: (w / 100) * 8, color: globalVariables.dark1),
+                icon: Icon(Icons.person_2_outlined,
+                    color: globalVariables.dark1)),
+            BottomNavigationBarItem(
+                label: 'Profile',
+                icon: Icon(Icons.check, color: globalVariables.dark1))
+          ]),
       body: BlocProvider(
           create: (context) => userProfileCubit(),
           child: BlocBuilder<userProfileCubit, userProfileState>(
@@ -56,7 +47,7 @@ class _userProfileState extends State<userProfile> {
                   //alignment: Alignment.center,
                   width: w,
                   height: h,
-                  color: const Color.fromARGB(255, 33, 37, 41),
+                  color: globalVariables.dark1,
                   child: SingleChildScrollView(
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,7 +86,7 @@ class _userProfileState extends State<userProfile> {
                             state.email,
                             textAlign: TextAlign.right,
                             style: GoogleFonts.getFont("Gowun Dodum").copyWith(
-                                color: const Color.fromARGB(200, 222, 226, 230),
+                                color: globalVariables.light2,
                                 fontSize: (w / 100) * 6,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -105,7 +96,7 @@ class _userProfileState extends State<userProfile> {
                           child: Text(
                             "Past Diagnoses",
                             style: GoogleFonts.getFont("Gowun Dodum").copyWith(
-                                color: const Color.fromARGB(255, 222, 226, 230),
+                                color: globalVariables.light1,
                                 fontSize: (w / 100) * 5),
                           ),
                         ),

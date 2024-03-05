@@ -1,8 +1,10 @@
+import 'package:dieases_prediction/commonWidgets.dart';
 import 'package:dieases_prediction/cubits/solution/solution_cubit.dart';
 import 'package:dieases_prediction/cubits/solution/solution_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:dieases_prediction/globalVariables.dart';
 
 // ignore: must_be_immutable
 class solution extends StatefulWidget {
@@ -20,15 +22,8 @@ class _solutionState extends State<solution> {
     double w = MediaQuery.of(context).size.width,
         h = MediaQuery.of(context).size.height;
     return Scaffold(
-        appBar: AppBar(
-          iconTheme: IconThemeData(
-              color: const Color.fromARGB(255, 222, 226, 230), size: (w / 100) * 6),
-          backgroundColor: const Color.fromARGB(255, 33, 37, 41),
-        ),
-        drawer: Drawer(
-            backgroundColor: const Color.fromARGB(255, 52, 58, 64),
-            // elevation: 10,
-            child: ListView(children: const [])),
+        appBar: commonWidgets.appBar(w),
+        drawer: commonWidgets.drawer(w, h),
         body: Container(
           child: BlocProvider(
               create: (context) => solutionCubit(),
@@ -41,7 +36,7 @@ class _solutionState extends State<solution> {
                       alignment: Alignment.center,
                       width: w,
                       height: h,
-                      color: const Color.fromARGB(255, 33, 37, 41),
+                      color: globalVariables.dark1,
                       child: SingleChildScrollView(
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,7 +73,7 @@ class _solutionState extends State<solution> {
                                     color: (index % 2 == 0)
                                         ? const Color.fromARGB(
                                             255, 222, 226, 230)
-                                        : const Color.fromARGB(255, 33, 37, 41),
+                                        : globalVariables.dark1,
                                     margin: EdgeInsets.only(top: (h / 100) * 3),
                                     child: ListTile(
                                         leading: Icon(
@@ -122,9 +117,8 @@ class _solutionState extends State<solution> {
                               itemBuilder: (context, index) {
                                 return Container(
                                     color: (index % 2 == 0)
-                                        ? const Color.fromARGB(
-                                            255, 222, 226, 230)
-                                        : const Color.fromARGB(255, 33, 37, 41),
+                                        ? globalVariables.light1
+                                        : globalVariables.dark1,
                                     margin: EdgeInsets.only(top: (h / 100) * 3),
                                     child: ListTile(
                                         leading: Icon(

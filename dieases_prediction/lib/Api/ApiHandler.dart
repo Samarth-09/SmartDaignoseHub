@@ -36,14 +36,11 @@ class ApiHandler {
         options: Options(
             headers: (globalVariables.token != "")
                 ? {"authorization": "Bearer ${globalVariables.token}"}
-                : {
-                    "authorization":
-                        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbUBnbWFpbC5jb20iLCJpYXQiOjE3MDkzNjQxMTF9.7O8GdIsqRvM8XFnZ3CoY2yFVb1cpcLz2rsY2Na1kiAc"
-                  }));
+                : null));
     // print(res.data['dieseasesHistory']['dateOfCheck']);
     List<disease> l = List.generate(res.data['dieseasesHistory'].length,
         (index) => disease.fromJson(res.data['dieseasesHistory'][index]));
-        print(l);
+    print(l);
     return user(
         uname: res.data['uname'], email: res.data['email'], diseaseHistory: l);
   }

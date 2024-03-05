@@ -23,7 +23,7 @@ class _loginState extends State<login> {
   @override
   void initState() {
     super.initState();
-    chechTokenPresence();
+    fun();
     controller = VideoPlayerController.asset("assets/videos/corona.mp4");
     controller!.initialize().then((_) {
       controller!.play();
@@ -32,6 +32,13 @@ class _loginState extends State<login> {
         print(1);
       });
     });
+  }
+
+  void fun() async {
+    var r = await globalVariables.chechTokenPresence(context);
+    if (r == 1) {
+      await Navigator.popAndPushNamed(context, routes.selectDisease);
+    }
   }
 
   @override
@@ -183,11 +190,11 @@ class _loginState extends State<login> {
     ScaffoldMessenger.of(context).showSnackBar(s);
   }
 
-  void chechTokenPresence() async {
-    globalVariables.setToken().then((value) async {
-      if (globalVariables.token != "") {
-        await Navigator.popAndPushNamed(context, routes.selectDisease);
-      }
-    });
-  }
+  // void chechTokenPresence() async {
+  //   globalVariables.setToken().then((value) async {
+  //     if (globalVariables.token != "") {
+  //       await Navigator.popAndPushNamed(context, routes.selectDisease);
+  //     }
+  //   });
+  // }
 }
