@@ -4,7 +4,7 @@ import "package:dieases_prediction/globalVariables.dart";
 import "package:dio/dio.dart";
 
 class ApiHandler {
-  String baseUrl = "http://localhost:3000";
+  String baseUrl = "https://smartdaignosehub-1.onrender.com";
   Future<int> predictDiabetes(l) async {
     var res = await Dio().post("$baseUrl/predict/diabetes",
         data: {"values": l},
