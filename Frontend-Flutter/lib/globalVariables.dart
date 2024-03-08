@@ -9,6 +9,18 @@ class globalVariables {
       light3 = const Color.fromARGB(255, 248, 249, 250),
       dark1 = const Color.fromARGB(255, 33, 37, 41),
       dark2 = const Color.fromARGB(255, 52, 58, 64);
+
+  static List<String> diabetesReportValueNames = [
+    "Pregnancies",
+    "Glucose",
+    "BloodPressure",
+    "SkinThickness",
+    "Insulin",
+    "BMI",
+    "DiabetesCount",
+    "Age"
+  ];
+
   static void storeToken(t) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString("token", t);

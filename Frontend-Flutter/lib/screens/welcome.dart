@@ -64,7 +64,8 @@ class _welcomeState extends State<welcome> {
                 InkWell(
                   onTap: () async {
                     var r = await globalVariables.chechTokenPresence(context);
-                    if (r == 1) {
+                    print(r);
+                    if (r == 0) {
                       await Navigator.pushNamed(context, routes.login);
                     } else {
                       await Navigator.pushNamed(context, routes.selectDisease);
