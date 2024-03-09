@@ -15,21 +15,31 @@ class diabetes extends StatefulWidget {
 }
 
 class _diabetesState extends State<diabetes> {
+  List<TextEditingController> t = [
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController()
+  ];
+  // t.add(TextEditingController());
+  // t.add(TextEditingController());
+  // t.add(TextEditingController());
+  // t.add(TextEditingController());
+  // t.add(TextEditingController());
+  // t.add(TextEditingController());
+  // t.add(TextEditingController());
+  // t.add(TextEditingController());
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width,
         h = MediaQuery.of(context).size.height;
-    List<TextEditingController> t = [];
-    t.add(TextEditingController());
-    t.add(TextEditingController());
-    t.add(TextEditingController());
-    t.add(TextEditingController());
-    t.add(TextEditingController());
-    t.add(TextEditingController());
-    t.add(TextEditingController());
-    t.add(TextEditingController());
+
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: false,
         body: Container(
             width: w,
             height: h,

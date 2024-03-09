@@ -4,14 +4,15 @@ import "package:dieases_prediction/globalVariables.dart";
 import "package:dio/dio.dart";
 
 class ApiHandler {
-  String baseUrl = "https://smartdaignosehub-1.onrender.com";
+  // String baseUrl = "https://smartdaignosehub-1.onrender.com";
+  String baseUrl = "http://192.168.1.10:3001";
   Future<int> predictDiabetes(l) async {
     var res = await Dio().post("$baseUrl/predict/diabetes",
         data: {"values": l},
         options: Options(
             headers: (globalVariables.token != "")
                 ? {"authorization": "Bearer ${globalVariables.token}"}
-                : null));
+                : null)).timeout(Duration(minutes: 1));
     return res.data['outcome'];
   }
 

@@ -38,7 +38,7 @@ app.use("/predict", mlModelRouter);
 
 app.use("/user", userRouter);
 //set port number dynamically on the basis of the enviornment(hosting env)
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log("started" + port);
 });
