@@ -180,14 +180,15 @@ class _loginState extends State<login> {
     var result = await state.ah.login(state.email, state.pwd);
     if (result) {
       await Navigator.popAndPushNamed(context, routes.selectDisease);
+    } else {
+      SnackBar s = SnackBar(
+          backgroundColor: const Color.fromARGB(255, 206, 212, 218),
+          content: Text(
+              "Credentials are not Correct. Please check entered credentials",
+              style: GoogleFonts.getFont("Gowun Dodum").copyWith(
+                  color: const Color.fromARGB(255, 33, 37, 41), fontSize: 20)));
+      ScaffoldMessenger.of(context).showSnackBar(s);
     }
-    SnackBar s = SnackBar(
-        backgroundColor: const Color.fromARGB(255, 206, 212, 218),
-        content: Text(
-            "Credentials are not Correct. Please check entered credentials",
-            style: GoogleFonts.getFont("Gowun Dodum").copyWith(
-                color: const Color.fromARGB(255, 33, 37, 41), fontSize: 20)));
-    ScaffoldMessenger.of(context).showSnackBar(s);
   }
 
   // void chechTokenPresence() async {
