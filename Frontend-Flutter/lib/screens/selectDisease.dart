@@ -42,8 +42,7 @@ class _selectDiseaseState extends State<selectDisease> {
                             fontStyle: FontStyle.italic),
                         children: [
                           TextSpan(
-                              text:
-                                  "  to our multi disease prediction app.",
+                              text: "  to our multi disease prediction app.",
                               style: GoogleFonts.getFont("Gowun Dodum")
                                   .copyWith(
                                       color: const Color.fromARGB(
@@ -51,7 +50,7 @@ class _selectDiseaseState extends State<selectDisease> {
                                       fontSize: (w / 100) * 5,
                                       fontWeight: FontWeight.bold,
                                       fontStyle: FontStyle.normal)),
-                                      TextSpan(
+                          TextSpan(
                               text:
                                   "Let's check your disease. We hope you will be in safe zome from this diseases. But for the sale of ensurance, we preffer you to check once.",
                               style: GoogleFonts.getFont("Gowun Dodum")
@@ -95,7 +94,10 @@ class _selectDiseaseState extends State<selectDisease> {
                         ),
                       )),
                   InkWell(
-                      onTap: () {},
+                      onTap: () async {
+                        await Navigator.pushNamed(
+                            context, routes.predictHeartDisease);
+                      },
                       child: Container(
                         margin: EdgeInsets.only(top: (h / 100) * 5),
                         alignment: Alignment.center,

@@ -5,7 +5,7 @@ import 'package:dieases_prediction/screens/outcome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:dieases_prediction/widgets.dart';
+import 'package:dieases_prediction/commonWidgets.dart';
 
 class diabetes extends StatefulWidget {
   const diabetes({super.key});
@@ -25,14 +25,6 @@ class _diabetesState extends State<diabetes> {
     TextEditingController(),
     TextEditingController()
   ];
-  // t.add(TextEditingController());
-  // t.add(TextEditingController());
-  // t.add(TextEditingController());
-  // t.add(TextEditingController());
-  // t.add(TextEditingController());
-  // t.add(TextEditingController());
-  // t.add(TextEditingController());
-  // t.add(TextEditingController());
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width,
@@ -47,16 +39,16 @@ class _diabetesState extends State<diabetes> {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  widgets.myInputField(
+                  commonWidgets.myInputField(
                       w * 0.9, w, "Pregnancies", "3.168693", t[0], null),
                   SizedBox(
                       width: w * 0.9,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          widgets.myInputField(
+                          commonWidgets.myInputField(
                               w * 0.4, w, "Glucose", "110.586626", t[1], null),
-                          widgets.myInputField(w * 0.4, w, "BloodPressure",
+                          commonWidgets.myInputField(w * 0.4, w, "BloodPressure",
                               "68.094985", t[2], null)
                         ],
                       )),
@@ -65,9 +57,9 @@ class _diabetesState extends State<diabetes> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          widgets.myInputField(w * 0.4, w, "SkinThickness",
+                          commonWidgets.myInputField(w * 0.4, w, "SkinThickness",
                               "20.052432", t[3], null),
-                          widgets.myInputField(
+                          commonWidgets.myInputField(
                               w * 0.4, w, "Insulin", "70.563830", t[4], null)
                         ],
                       )),
@@ -76,9 +68,9 @@ class _diabetesState extends State<diabetes> {
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            widgets.myInputField(
+                            commonWidgets.myInputField(
                                 w * 0.4, w, "BMI", "30.567477", t[5], null),
-                            widgets.myInputField(
+                            commonWidgets.myInputField(
                                 w * 0.4,
                                 w,
                                 "DiabetesPedigreeFunction",
@@ -86,7 +78,7 @@ class _diabetesState extends State<diabetes> {
                                 t[6],
                                 null)
                           ])),
-                  widgets.myInputField(w * 0.9, w, "Age", "31", t[7], null),
+                  commonWidgets.myInputField(w * 0.9, w, "Age", "31", t[7], null),
                   BlocProvider(
                     create: (context) => diabetesCubit(),
                     child: BlocBuilder<diabetesCubit, diabetesState>(

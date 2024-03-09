@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:video_player/video_player.dart';
-import 'package:dieases_prediction/widgets.dart';
+import 'package:dieases_prediction/commonWidgets.dart';
 import "package:dieases_prediction/globalVariables.dart";
 // import 'package:http/http.dart' as http;
 
@@ -70,7 +70,7 @@ class _loginState extends State<login> {
                 children: [
                   Container(
                     margin: EdgeInsets.only(top: (h / 100) * 10),
-                    child: widgets.myInputField(
+                    child: commonWidgets.myInputField(
                         w * 0.9,
                         w,
                         "email",
@@ -82,7 +82,7 @@ class _loginState extends State<login> {
                   ),
                   Container(
                     margin: EdgeInsets.only(top: (h / 100) * 7),
-                    child: widgets.myInputField(
+                    child: commonWidgets.myInputField(
                         w * 0.9,
                         w,
                         "password",

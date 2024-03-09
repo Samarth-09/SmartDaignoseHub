@@ -136,87 +136,20 @@ class _userProfileState extends State<userProfile> {
                                                           FontWeight.bold)),
                                           content: SizedBox(
                                               height: h * 0.55,
-                                              child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  // mainAxisAlignment:
-                                                  //     MainAxisAlignment
-                                                  //         .spaceEvenly,
-                                                  children: [
-                                                    Divider(
-                                                        thickness: 2,
-                                                        color: globalVariables
-                                                            .dark1),
-                                                    Text("Report Values",
-                                                        style: GoogleFonts
-                                                                .getFont(
-                                                                    "Gowun Dodum")
-                                                            .copyWith(
-                                                                color:
-                                                                    globalVariables
-                                                                        .dark1,
-                                                                fontSize:
-                                                                    (w / 100) *
-                                                                        6,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold)),
-                                                    SizedBox(
-                                                      // height: h * 0.55,
-                                                      child: ListView.builder(
-                                                        physics:
-                                                            NeverScrollableScrollPhysics(),
-                                                        shrinkWrap: true,
-                                                        itemCount: state
-                                                            .diseaseHistory[
-                                                                index]
-                                                            .values
-                                                            .length,
-                                                        itemBuilder:
-                                                            (BuildContext
-                                                                    context,
-                                                                int i) {
-                                                          var l = [];
-                                                          if (state
-                                                                  .diseaseHistory[
-                                                                      index]
-                                                                  .name ==
-                                                              "Diabetes") {
-                                                            l = globalVariables
-                                                                .diabetesReportValueNames;
-                                                          } else if (state
-                                                                  .diseaseHistory[
-                                                                      index]
-                                                                  .name ==
-                                                              "Diabetes") {
-                                                          } else {}
-
-                                                          return Container(
-                                                              margin: EdgeInsets
-                                                                  .only(
-                                                                      top: (h /
-                                                                              100) *
-                                                                          1.5),
-                                                              child: Text(
-                                                                  "${l[i]} : ${state.diseaseHistory[index].values[i]}",
-                                                                  style: GoogleFonts
-                                                                          .getFont(
-                                                                              "Gowun Dodum")
-                                                                      .copyWith(
-                                                                    color: globalVariables
-                                                                        .dark1,
-                                                                    fontSize:
-                                                                        (w / 100) *
-                                                                            5,
-                                                                  )));
-                                                        },
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      margin: EdgeInsets.only(
-                                                          top: (h / 100) * 2),
-                                                      child: Text(
-                                                          "Result:- ${state.diseaseHistory[index].outcome}",
+                                              child: SingleChildScrollView(
+                                                child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    // mainAxisAlignment:
+                                                    //     MainAxisAlignment
+                                                    //         .spaceEvenly,
+                                                    children: [
+                                                      Divider(
+                                                          thickness: 2,
+                                                          color: globalVariables
+                                                              .dark1),
+                                                      Text("Report Values",
                                                           style: GoogleFonts
                                                                   .getFont(
                                                                       "Gowun Dodum")
@@ -230,8 +163,76 @@ class _userProfileState extends State<userProfile> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold)),
-                                                    )
-                                                  ])),
+                                                      SizedBox(
+                                                        // height: h * 0.55,
+                                                        child: ListView.builder(
+                                                          physics:
+                                                              NeverScrollableScrollPhysics(),
+                                                          shrinkWrap: true,
+                                                          itemCount: state
+                                                              .diseaseHistory[
+                                                                  index]
+                                                              .values
+                                                              .length,
+                                                          itemBuilder:
+                                                              (BuildContext
+                                                                      context,
+                                                                  int i) {
+                                                            var l = [];
+                                                            if (state
+                                                                    .diseaseHistory[
+                                                                        index]
+                                                                    .name ==
+                                                                "Diabetes") {
+                                                              l = globalVariables
+                                                                  .diabetesReportValueNames;
+                                                            } else if (state
+                                                                    .diseaseHistory[
+                                                                        index]
+                                                                    .name ==
+                                                                "Heart Disease") {
+                                                              l = globalVariables
+                                                                  .heartDiseaseReportValueNames;
+                                                            } else {}
+
+                                                            return Container(
+                                                                margin: EdgeInsets.only(
+                                                                    top: (h /
+                                                                            100) *
+                                                                        1.5),
+                                                                child: Text(
+                                                                    "${l[i]} : ${state.diseaseHistory[index].values[i]}",
+                                                                    style: GoogleFonts.getFont(
+                                                                            "Gowun Dodum")
+                                                                        .copyWith(
+                                                                      color: globalVariables
+                                                                          .dark1,
+                                                                      fontSize:
+                                                                          (w / 100) *
+                                                                              5,
+                                                                    )));
+                                                          },
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        margin: EdgeInsets.only(
+                                                            top: (h / 100) * 2),
+                                                        child: Text(
+                                                            "Result:- ${state.diseaseHistory[index].outcome}",
+                                                            style: GoogleFonts.getFont(
+                                                                    "Gowun Dodum")
+                                                                .copyWith(
+                                                                    color: globalVariables
+                                                                        .dark1,
+                                                                    fontSize:
+                                                                        (w / 100) *
+                                                                            6,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold)),
+                                                      )
+                                                    ]),
+                                              )),
                                         );
                                       });
                                 },

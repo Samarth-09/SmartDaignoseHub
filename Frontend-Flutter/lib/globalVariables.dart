@@ -21,6 +21,22 @@ class globalVariables {
     "Age"
   ];
 
+  static List<String> heartDiseaseReportValueNames = [
+    "Age",
+    "Sex",
+    "Chest Pain",
+    "trestbps",
+    "chol",
+    "fbs",
+    "restecg",
+    "thalach",
+    "exang",
+    "oldpeak",
+    "slope",
+    "ca",
+    "thal"
+  ];
+
   static void storeToken(t) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString("token", t);

@@ -16,6 +16,26 @@ class ApiHandler {
     return res.data['outcome'];
   }
 
+  Future<int> predictHeartDisease(l) async {
+    var res = await Dio().post("$baseUrl/predict/heartDieases",
+        data: {"values": l},
+        options: Options(
+            headers: (globalVariables.token != "")
+                ? {"authorization": "Bearer ${globalVariables.token}"}
+                : null)).timeout(Duration(minutes: 1));
+    return res.data['outcome'];
+  }
+
+  Future<int> predictParkinson(l) async {
+    var res = await Dio().post("$baseUrl/predict/parkinson",
+        data: {"values": l},
+        options: Options(
+            headers: (globalVariables.token != "")
+                ? {"authorization": "Bearer ${globalVariables.token}"}
+                : null)).timeout(Duration(minutes: 1));
+    return res.data['outcome'];
+  }
+
   Future<bool> login(email, pwd) async {
     var res = await Dio().get("$baseUrl/user/login",
         queryParameters: {"email": email, "pwd": pwd},

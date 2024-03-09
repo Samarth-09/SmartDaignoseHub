@@ -1,5 +1,6 @@
 import 'package:dieases_prediction/screens/diabetes.dart';
 import 'package:dieases_prediction/screens/diseaseDescreption.dart';
+import 'package:dieases_prediction/screens/heartDisease.dart';
 import 'package:dieases_prediction/screens/login.dart';
 import 'package:dieases_prediction/routes.dart';
 import 'package:dieases_prediction/screens/outcome.dart';
@@ -28,9 +29,10 @@ class MyApp extends StatelessWidget {
           routes.outcome: (context) => const outcome(),
           routes.welcome: (context) => const welcome(),
           routes.selectDisease: (context) => const selectDisease(),
-          routes.diseaseDescreption:(context) => const diseaseDescreption(),
-          routes.solution:(context) => solution(disease: "Diabetes"),
-          routes.userProfile:(context) => const userProfile()
+          routes.diseaseDescreption: (context) => const diseaseDescreption(),
+          routes.solution: (context) => solution(disease: "Diabetes"),
+          routes.userProfile: (context) => const userProfile(),
+          routes.predictHeartDisease: (context) => const heartDisease()
         });
   }
 }
