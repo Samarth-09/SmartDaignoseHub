@@ -1,6 +1,7 @@
 import 'package:dieases_prediction/commonWidgets.dart';
 import 'package:dieases_prediction/cubits/heartDisease/heartDisease_cubit.dart';
 import 'package:dieases_prediction/cubits/heartDisease/heartDisease_state.dart';
+import 'package:dieases_prediction/globalVariables.dart';
 import 'package:flutter/material.dart';
 import 'package:dieases_prediction/routes.dart';
 import 'package:dieases_prediction/screens/outcome.dart';
@@ -40,7 +41,7 @@ class _heartDiseaseState extends State<heartDisease> {
         body: Container(
             width: w,
             height: h,
-            color: const Color.fromARGB(255, 52, 58, 64),
+            color: globalVariables.dark2,
             child: SingleChildScrollView(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -120,7 +121,7 @@ class _heartDiseaseState extends State<heartDisease> {
                               context.read<heartDiseaseCubit>().submitted(l);
                             },
                             child: Container(
-                              margin: EdgeInsets.only(bottom: (h/100)*3),
+                              margin: EdgeInsets.only(bottom: (h / 100) * 3),
                               alignment: Alignment.center,
                               width: w * 0.9,
                               padding: const EdgeInsets.all(8),
@@ -132,8 +133,7 @@ class _heartDiseaseState extends State<heartDisease> {
                                 "Submit",
                                 style: GoogleFonts.getFont("Gowun Dodum")
                                     .copyWith(
-                                        color: const Color.fromARGB(
-                                            255, 33, 37, 41),
+                                        color: globalVariables.dark1,
                                         fontSize: (w / 100) * 8),
                               ),
                             ),
@@ -143,13 +143,13 @@ class _heartDiseaseState extends State<heartDisease> {
                             getResult(state);
                           }
                           return Container(
-                            margin: EdgeInsets.only(bottom: (h/100)*3),
+                              margin: EdgeInsets.only(bottom: (h / 100) * 3),
                               padding: const EdgeInsets.all(10),
                               width: (w / 100) * 15,
                               height: (h / 100) * 6,
-                              color: const Color.fromARGB(255, 33, 37, 41),
-                              child: const CircularProgressIndicator(
-                                  color: Color.fromARGB(255, 206, 212, 218)));
+                              color: globalVariables.dark1,
+                              child: CircularProgressIndicator(
+                                  color: globalVariables.light1));
                         }
                       }),
                     )

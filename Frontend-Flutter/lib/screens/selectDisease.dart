@@ -115,7 +115,10 @@ class _selectDiseaseState extends State<selectDisease> {
                         ),
                       )),
                   InkWell(
-                      onTap: () {},
+                      onTap: () async {
+                        await Navigator.pushNamed(
+                            context, routes.predictParkinson);
+                      },
                       child: Container(
                         margin: EdgeInsets.only(top: (h / 100) * 5),
                         alignment: Alignment.center,

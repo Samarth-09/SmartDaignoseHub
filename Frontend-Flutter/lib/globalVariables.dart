@@ -37,6 +37,32 @@ class globalVariables {
     "thal"
   ];
 
+  static List<String> parkinsonReportValueNames = [
+    "MDVP:Fo",
+    "MDVP:Fhi",
+    "MDVP:Flo",
+    "MDVP:Jitter(%)",
+    "MDVP:Jitter(Abs)",
+    "MDVP:RAP",
+    "MDVP:PPQ",
+    "MDVP:DDP",
+    "MDVP:Shimmer",
+    "MDVP:Shimmer(dB)",
+    "Shimmer:APQ3",
+    "Shimmer:APQ5",
+    "MDVP:APQ",
+    "Shimmer:DDA",
+    "NHR",
+    "HNR",
+    "status",
+    "RPDE",
+    "D2",
+    "DFA",
+    "spread1",
+    "spread2",
+    "PPE"
+  ];
+
   static void storeToken(t) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString("token", t);
