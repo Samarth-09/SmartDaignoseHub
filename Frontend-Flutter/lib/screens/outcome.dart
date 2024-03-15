@@ -3,16 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// ignore: must_be_immutable
 class outcome extends StatefulWidget {
-  static int result = 0;
-  static String dieasesName = "Diabetes";
-  const outcome({super.key});
+  int result = 0;
+  String diseaseName = "Diabetes";
+  outcome({super.key, required this.diseaseName, required this.result});
 
   @override
-  State<outcome> createState() => _outcomeState();
+  State<outcome> createState() => _outcomeState(diseaseName, result);
 }
 
 class _outcomeState extends State<outcome> {
+  String diseaseName;
+  int result;
+  _outcomeState(this.diseaseName, this.result);
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width,
@@ -37,7 +41,7 @@ class _outcomeState extends State<outcome> {
                 Container(
                   margin: EdgeInsets.only(top: (h / 100) * 7),
                   child: Text(
-                    (outcome.result != 0) ? "OOPS..!!" : "Fabulous!!!",
+                    (result != 0) ? "OOPS..!!" : "Fabulous!!!",
                     style: GoogleFonts.getFont("Gowun Dodum").copyWith(
                         color: const Color.fromARGB(255, 233, 236, 239),
                         fontSize: (w / 100) * 8,
@@ -48,9 +52,9 @@ class _outcomeState extends State<outcome> {
                 Container(
                     margin: EdgeInsets.only(top: (h / 100) * 5),
                     child: Text(
-                      (outcome.result != 0)
-                          ? "You have ${outcome.dieasesName}"
-                          : "You are safe from this ${outcome.dieasesName} disease.",
+                      (result != 0)
+                          ? "You have $diseaseName"
+                          : "You are safe from this $diseaseName disease.",
                       style: GoogleFonts.getFont("Gowun Dodum").copyWith(
                           color: const Color.fromARGB(255, 233, 236, 239),
                           fontSize: (w / 100) * 6,
@@ -59,7 +63,7 @@ class _outcomeState extends State<outcome> {
                 Container(
                     margin: EdgeInsets.only(top: (h / 100) * 5),
                     child: Text(
-                      (outcome.result != 0)
+                      (result != 0)
                           ? "Don't worry, we have provided a solution to conquer this disease and hope you will get well soon"
                           : "Now you can reach out in more detail this diseases by visiting tutorials provided below:- ",
                       style: GoogleFonts.getFont("Gowun Dodum").copyWith(
@@ -68,14 +72,14 @@ class _outcomeState extends State<outcome> {
                           fontWeight: FontWeight.bold),
                     )),
                 Container(
-                    child: (outcome.result != 0)
+                    child: (result != 0)
                         ? InkWell(
                             onTap: () async {
                               await Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
-                                        solution(disease: outcome.dieasesName),
+                                        solution(disease: diseaseName),
                                   ));
                             },
                             child: Container(

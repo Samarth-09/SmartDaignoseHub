@@ -48,8 +48,8 @@ class _diabetesState extends State<diabetes> {
                         children: [
                           commonWidgets.myInputField(
                               w * 0.4, w, "Glucose", "110.586626", t[1], null),
-                          commonWidgets.myInputField(w * 0.4, w, "BloodPressure",
-                              "68.094985", t[2], null)
+                          commonWidgets.myInputField(w * 0.4, w,
+                              "BloodPressure", "68.094985", t[2], null)
                         ],
                       )),
                   SizedBox(
@@ -57,8 +57,8 @@ class _diabetesState extends State<diabetes> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          commonWidgets.myInputField(w * 0.4, w, "SkinThickness",
-                              "20.052432", t[3], null),
+                          commonWidgets.myInputField(w * 0.4, w,
+                              "SkinThickness", "20.052432", t[3], null),
                           commonWidgets.myInputField(
                               w * 0.4, w, "Insulin", "70.563830", t[4], null)
                         ],
@@ -78,7 +78,8 @@ class _diabetesState extends State<diabetes> {
                                 t[6],
                                 null)
                           ])),
-                  commonWidgets.myInputField(w * 0.9, w, "Age", "31", t[7], null),
+                  commonWidgets.myInputField(
+                      w * 0.9, w, "Age", "31", t[7], null),
                   BlocProvider(
                     create: (context) => diabetesCubit(),
                     child: BlocBuilder<diabetesCubit, diabetesState>(
@@ -129,7 +130,11 @@ class _diabetesState extends State<diabetes> {
   }
 
   void getResult(state) async {
-    outcome.result = await state.ah.predictDiabetes(state.l);
-    await Navigator.popAndPushNamed(context, routes.outcome);
+    var r = await state.ah.predictDiabetes(state.l);
+    var n = "Diabetes";
+    await Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => outcome(diseaseName: n, result: r)));
   }
 }

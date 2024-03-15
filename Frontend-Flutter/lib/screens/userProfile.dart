@@ -193,7 +193,10 @@ class _userProfileState extends State<userProfile> {
                                                                 "Heart Disease") {
                                                               l = globalVariables
                                                                   .heartDiseaseReportValueNames;
-                                                            } else {}
+                                                            } else {
+                                                              l = globalVariables
+                                                                  .parkinsonReportValueNames;
+                                                            }
 
                                                             return Container(
                                                                 margin: EdgeInsets.only(

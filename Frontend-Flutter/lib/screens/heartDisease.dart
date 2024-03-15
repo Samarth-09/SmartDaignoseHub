@@ -3,7 +3,7 @@ import 'package:dieases_prediction/cubits/heartDisease/heartDisease_cubit.dart';
 import 'package:dieases_prediction/cubits/heartDisease/heartDisease_state.dart';
 import 'package:dieases_prediction/globalVariables.dart';
 import 'package:flutter/material.dart';
-import 'package:dieases_prediction/routes.dart';
+// import 'package:dieases_prediction/routes.dart';
 import 'package:dieases_prediction/screens/outcome.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -159,8 +159,11 @@ class _heartDiseaseState extends State<heartDisease> {
   }
 
   void getResult(state) async {
-    outcome.result = await state.ah.predictHeartDisease(state.l);
-    outcome.dieasesName = "Heart Disease";
-    await Navigator.popAndPushNamed(context, routes.outcome);
+    var r = await state.ah.predictHeartDisease(state.l);
+    var n = "Heart Disease";
+    await Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => outcome(diseaseName: n, result: r)));
   }
 }

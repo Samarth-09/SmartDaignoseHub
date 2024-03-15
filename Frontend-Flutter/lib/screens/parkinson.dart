@@ -3,7 +3,7 @@ import 'package:dieases_prediction/cubits/parkinson/parkinson_cubit.dart';
 import 'package:dieases_prediction/cubits/parkinson/parkinson_state.dart';
 import 'package:dieases_prediction/globalVariables.dart';
 import 'package:flutter/material.dart';
-import 'package:dieases_prediction/routes.dart';
+// import 'package:dieases_prediction/routes.dart';
 import 'package:dieases_prediction/screens/outcome.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,36 +16,34 @@ class parkinson extends StatefulWidget {
 }
 
 class _parkinsonState extends State<parkinson> {
-  List<TextEditingController> t = [
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController()
-  ];
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width,
         h = MediaQuery.of(context).size.height;
-
+    List<TextEditingController> t = [
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController()
+    ];
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Container(
@@ -58,9 +56,11 @@ class _parkinsonState extends State<parkinson> {
                   children: [
                     Container(
                       // height: h,
-                      width: w*0.9,
+                      width: w * 0.9,
                       margin: EdgeInsets.only(top: (h / 100) * 3),
                       child: ListView.builder(
+                        addAutomaticKeepAlives:
+                            true, //not rerender when scrolled out//as textediditing controller was called after being disposes
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount:
@@ -129,8 +129,14 @@ class _parkinsonState extends State<parkinson> {
   }
 
   void getResult(state) async {
-    outcome.result = await state.ah.predictParkinson(state.l);
-    outcome.dieasesName = "Parkinson";
-    await Navigator.popAndPushNamed(context, routes.outcome);
+    var r = await state.ah.predictParkinson(state.l);
+    var n = "Parkinson";
+    // print(1);
+    // t.forEach((element) {element.dispose();});
+    // await Navigator.popAndPushNameFd(context, routes.outcome);
+    await Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => outcome(diseaseName: n, result: r)));
   }
 }

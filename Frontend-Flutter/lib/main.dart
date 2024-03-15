@@ -27,7 +27,8 @@ class MyApp extends StatelessWidget {
         routes: {
           routes.login: (context) => const login(),
           routes.predictDiabetes: (context) => const diabetes(),
-          routes.outcome: (context) => const outcome(),
+          routes.outcome: (context) =>
+              outcome(diseaseName: "Diabetes", result: 0),
           routes.welcome: (context) => const welcome(),
           routes.selectDisease: (context) => const selectDisease(),
           routes.diseaseDescreption: (context) => const diseaseDescreption(),

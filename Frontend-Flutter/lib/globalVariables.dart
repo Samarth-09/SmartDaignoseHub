@@ -54,15 +54,39 @@ class globalVariables {
     "Shimmer:DDA",
     "NHR",
     "HNR",
-    "status",
     "RPDE",
-    "D2",
     "DFA",
     "spread1",
     "spread2",
+    "D2",
     "PPE"
   ];
 
+  static List<String> parkinsonReportValue = [
+    "119.992",
+    "157.302",
+    "74.997",
+    "0.00784",
+    "0.00007",
+    "0.00370",
+    "000554",
+    "0.01109",
+    "0.04374",
+    "0.426",
+    "0.02971",
+    "0.06545",
+    "0.02211",
+    "21.033",
+    "0.414783",
+    "0.815285",
+    "-4.813031",
+    "0.266482",
+    "2.301442",
+    "0.284654",
+    "1",
+    "1",
+    "1"
+  ];
   static void storeToken(t) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString("token", t);
