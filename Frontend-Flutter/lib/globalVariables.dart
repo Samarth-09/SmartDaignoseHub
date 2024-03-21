@@ -1,3 +1,4 @@
+import 'package:dieases_prediction/commonWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 // import './routes.dart';
@@ -9,6 +10,7 @@ class globalVariables {
       light3 = const Color.fromARGB(255, 248, 249, 250),
       dark1 = const Color.fromARGB(255, 33, 37, 41),
       dark2 = const Color.fromARGB(255, 52, 58, 64);
+  static commonWidgets c = commonWidgets();
 
   static List<String> diabetesReportValueNames = [
     "Pregnancies",

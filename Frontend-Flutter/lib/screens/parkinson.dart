@@ -16,34 +16,35 @@ class parkinson extends StatefulWidget {
 }
 
 class _parkinsonState extends State<parkinson> {
+  List<TextEditingController> t = [
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController()
+  ];
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width,
         h = MediaQuery.of(context).size.height;
-    List<TextEditingController> t = [
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController()
-    ];
+
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Container(
@@ -66,7 +67,7 @@ class _parkinsonState extends State<parkinson> {
                         itemCount:
                             globalVariables.parkinsonReportValueNames.length,
                         itemBuilder: (BuildContext context, int index) {
-                          return commonWidgets.myInputField(
+                          return globalVariables.c.myInputField(
                               w * 0.9,
                               w,
                               globalVariables.parkinsonReportValueNames[index],
@@ -86,7 +87,7 @@ class _parkinsonState extends State<parkinson> {
                               List<num> l = [];
                               for (var element in t) {
                                 l.add(num.parse(element.text));
-                                element.dispose();
+                                // element.dispose();
                               }
                               context.read<parkinsonCubit>().submitted(l);
                             },
@@ -134,9 +135,16 @@ class _parkinsonState extends State<parkinson> {
     // print(1);
     // t.forEach((element) {element.dispose();});
     // await Navigator.popAndPushNameFd(context, routes.outcome);
-    await Navigator.push(
+    await Navigator.pushReplacement(
         context,
         MaterialPageRoute(
             builder: (context) => outcome(diseaseName: n, result: r)));
   }
+
+  // @override
+  // void dispose() {
+  //   t.forEach((element) {
+  //     element.dispose();
+  //   });
+  // }
 }

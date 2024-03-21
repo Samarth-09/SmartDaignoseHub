@@ -6,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 // ignore: must_be_immutable
 class outcome extends StatefulWidget {
   int result = 0;
-  String diseaseName = "Diabetes";
+  String diseaseName = "";
   outcome({super.key, required this.diseaseName, required this.result});
 
   @override

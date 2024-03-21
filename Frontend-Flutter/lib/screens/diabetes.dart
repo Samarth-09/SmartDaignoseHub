@@ -1,11 +1,12 @@
 import 'package:dieases_prediction/cubits/diabetes/diabetes_cubit.dart';
 import 'package:dieases_prediction/cubits/diabetes/diabetes_state.dart';
-import 'package:dieases_prediction/routes.dart';
+import 'package:dieases_prediction/globalVariables.dart';
+// import 'package:dieases_prediction/routes.dart';
 import 'package:dieases_prediction/screens/outcome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:dieases_prediction/commonWidgets.dart';
+// import 'package:dieases_prediction/commonWidgets.dart';
 
 class diabetes extends StatefulWidget {
   const diabetes({super.key});
@@ -39,16 +40,16 @@ class _diabetesState extends State<diabetes> {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  commonWidgets.myInputField(
+                  globalVariables.c.myInputField(
                       w * 0.9, w, "Pregnancies", "3.168693", t[0], null),
                   SizedBox(
                       width: w * 0.9,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          commonWidgets.myInputField(
+                          globalVariables.c.myInputField(
                               w * 0.4, w, "Glucose", "110.586626", t[1], null),
-                          commonWidgets.myInputField(w * 0.4, w,
+                          globalVariables.c.myInputField(w * 0.4, w,
                               "BloodPressure", "68.094985", t[2], null)
                         ],
                       )),
@@ -57,9 +58,9 @@ class _diabetesState extends State<diabetes> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          commonWidgets.myInputField(w * 0.4, w,
+                          globalVariables.c.myInputField(w * 0.4, w,
                               "SkinThickness", "20.052432", t[3], null),
-                          commonWidgets.myInputField(
+                          globalVariables.c.myInputField(
                               w * 0.4, w, "Insulin", "70.563830", t[4], null)
                         ],
                       )),
@@ -68,9 +69,9 @@ class _diabetesState extends State<diabetes> {
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            commonWidgets.myInputField(
+                            globalVariables.c.myInputField(
                                 w * 0.4, w, "BMI", "30.567477", t[5], null),
-                            commonWidgets.myInputField(
+                            globalVariables.c.myInputField(
                                 w * 0.4,
                                 w,
                                 "DiabetesPedigreeFunction",
@@ -78,8 +79,8 @@ class _diabetesState extends State<diabetes> {
                                 t[6],
                                 null)
                           ])),
-                  commonWidgets.myInputField(
-                      w * 0.9, w, "Age", "31", t[7], null),
+                  globalVariables.c
+                      .myInputField(w * 0.9, w, "Age", "31", t[7], null),
                   BlocProvider(
                     create: (context) => diabetesCubit(),
                     child: BlocBuilder<diabetesCubit, diabetesState>(
@@ -132,9 +133,11 @@ class _diabetesState extends State<diabetes> {
   void getResult(state) async {
     var r = await state.ah.predictDiabetes(state.l);
     var n = "Diabetes";
-    await Navigator.push(
+    //replace the current screen with the new one
+    await Navigator.pushReplacement(
         context,
         MaterialPageRoute(
             builder: (context) => outcome(diseaseName: n, result: r)));
+    // Navigator.pop(context);
   }
 }

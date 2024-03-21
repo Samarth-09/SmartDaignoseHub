@@ -41,6 +41,7 @@ class _loginState extends State<login> {
     }
   }
 
+  commonWidgets c = commonWidgets();
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width,
@@ -70,7 +71,7 @@ class _loginState extends State<login> {
                 children: [
                   Container(
                     margin: EdgeInsets.only(top: (h / 100) * 10),
-                    child: commonWidgets.myInputField(
+                    child: c.myInputField(
                         w * 0.9,
                         w,
                         "email",
@@ -82,7 +83,7 @@ class _loginState extends State<login> {
                   ),
                   Container(
                     margin: EdgeInsets.only(top: (h / 100) * 7),
-                    child: commonWidgets.myInputField(
+                    child: c.myInputField(
                         w * 0.9,
                         w,
                         "password",

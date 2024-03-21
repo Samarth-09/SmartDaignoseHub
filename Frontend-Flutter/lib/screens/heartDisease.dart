@@ -48,18 +48,18 @@ class _heartDiseaseState extends State<heartDisease> {
                   children: [
                     Container(
                         margin: EdgeInsets.only(top: (h / 100) * 3),
-                        child: commonWidgets.myInputField(
+                        child: globalVariables.c.myInputField(
                             w * 0.9, w, "Age", "25", t[0], null)),
-                    commonWidgets.myInputField(
+                    globalVariables.c.myInputField(
                         w * 0.9, w, "Sex", "Male", t[1], null),
                     SizedBox(
                         width: w * 0.9,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            commonWidgets.myInputField(
+                            globalVariables.c.myInputField(
                                 w * 0.4, w, "CP", "110.586626", t[2], null),
-                            commonWidgets.myInputField(
+                            globalVariables.c.myInputField(
                                 w * 0.4, w, "trestbps", "68.094985", t[3], null)
                           ],
                         )),
@@ -68,9 +68,9 @@ class _heartDiseaseState extends State<heartDisease> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            commonWidgets.myInputField(
+                            globalVariables.c.myInputField(
                                 w * 0.4, w, "chol", "20.052432", t[4], null),
-                            commonWidgets.myInputField(
+                            globalVariables.c.myInputField(
                                 w * 0.4, w, "fbs", "70.563830", t[5], null)
                           ],
                         )),
@@ -79,9 +79,9 @@ class _heartDiseaseState extends State<heartDisease> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              commonWidgets.myInputField(w * 0.4, w, "restecg",
+                              globalVariables.c.myInputField(w * 0.4, w, "restecg",
                                   "30.567477", t[6], null),
-                              commonWidgets.myInputField(
+                              globalVariables.c.myInputField(
                                   w * 0.4, w, "thalach", "0.434676", t[7], null)
                             ])),
                     SizedBox(
@@ -89,9 +89,9 @@ class _heartDiseaseState extends State<heartDisease> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              commonWidgets.myInputField(
+                              globalVariables.c.myInputField(
                                   w * 0.4, w, "exang", "30.567477", t[8], null),
-                              commonWidgets.myInputField(
+                              globalVariables.c.myInputField(
                                   w * 0.4, w, "oldpeak", "0.434676", t[9], null)
                             ])),
                     SizedBox(
@@ -99,12 +99,12 @@ class _heartDiseaseState extends State<heartDisease> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              commonWidgets.myInputField(w * 0.4, w, "slope",
+                              globalVariables.c.myInputField(w * 0.4, w, "slope",
                                   "30.567477", t[10], null),
-                              commonWidgets.myInputField(
+                              globalVariables.c.myInputField(
                                   w * 0.4, w, "ca", "0.434676", t[11], null)
                             ])),
-                    commonWidgets.myInputField(
+                    globalVariables.c.myInputField(
                         w * 0.9, w, "thal", "31", t[12], null),
                     BlocProvider(
                       create: (context) => heartDiseaseCubit(),
@@ -161,7 +161,7 @@ class _heartDiseaseState extends State<heartDisease> {
   void getResult(state) async {
     var r = await state.ah.predictHeartDisease(state.l);
     var n = "Heart Disease";
-    await Navigator.push(
+    await Navigator.pushReplacement(
         context,
         MaterialPageRoute(
             builder: (context) => outcome(diseaseName: n, result: r)));

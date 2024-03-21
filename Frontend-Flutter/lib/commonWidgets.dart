@@ -10,6 +10,7 @@ class commonWidgets {
     "Profile",
     "Login/SignUp",
     "Predict Disease",
+    "Disease Description",
     "FeedBack",
     "About Us"
   ];
@@ -18,6 +19,7 @@ class commonWidgets {
     Icons.person_2_sharp,
     Icons.login,
     Icons.heart_broken,
+    Icons.description_outlined,
     Icons.feedback_sharp,
     Icons.group
   ];
@@ -25,7 +27,8 @@ class commonWidgets {
     routes.welcome,
     routes.userProfile,
     routes.login,
-    routes.selectDisease
+    routes.selectDisease,
+    routes.diseaseDescreption,
   ];
   static Widget drawer(double w, double h) {
     return Drawer(
@@ -37,8 +40,8 @@ class commonWidgets {
           onTap: () async {
             current = index;
             var res = await globalVariables.chechTokenPresence(context);
-            if (res == 1) {
-              await Navigator.pushNamed(context, r[index % 4]);
+            if (res == 1 || index == 0 || index == 4) {
+              await Navigator.pushNamed(context, r[index % 5]);
             } else {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   backgroundColor: globalVariables.light1,
@@ -86,8 +89,9 @@ class commonWidgets {
         );
   }
 
-  static Widget myInputField(double w, double fs, String lt, String ht,
+  Widget myInputField(double w, double fs, String lt, String ht,
       TextEditingController t, Icon? i) {
+    print(lt);
     return Container(
       margin: EdgeInsets.only(bottom: (fs / 100) * 7),
       width: w,

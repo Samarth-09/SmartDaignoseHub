@@ -44,7 +44,7 @@ class _welcomeState extends State<welcome> {
                       clipBehavior: Clip.antiAlias,
                       borderRadius: BorderRadius.circular(20),
                       child: Image.asset(
-                        "assets/images/img1.jpeg",
+                        "/images/img1.jpeg",
                         width: w * 0.9,
                         height: h * 0.4,
                         fit: BoxFit.cover,

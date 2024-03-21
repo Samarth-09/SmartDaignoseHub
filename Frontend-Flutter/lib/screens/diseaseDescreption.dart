@@ -1,4 +1,5 @@
 import 'package:dieases_prediction/commonWidgets.dart';
+import 'package:dieases_prediction/screens/diseaseDetialDescription.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -115,14 +116,21 @@ class _diseaseDescreptionState extends State<diseaseDescreption> {
                 width: w * 0.9,
                 alignment: Alignment.bottomRight,
                 child: InkWell(
-                    onTap: () {},
+                    onTap: () async {
+                      await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                diseaseDetailDescription(disease: name),
+                          ));
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                           color: const Color.fromARGB(255, 33, 37, 41),
                           borderRadius: BorderRadius.circular(15)),
                       padding: const EdgeInsets.all(8),
                       child: Text(
-                        "more details->",
+                        "Analysis->",
                         style: GoogleFonts.getFont("Gowun Dodum").copyWith(
                           color: const Color.fromARGB(255, 222, 226, 230),
                           fontSize: (w / 100) * 5,

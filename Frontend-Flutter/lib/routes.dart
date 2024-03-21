@@ -9,4 +9,6 @@ class routes{
   static String userProfile = "/userProfile.dart";
   static String predictHeartDisease= '/heartDisease.dart';
   static String predictParkinson= '/parkinson.dart';
+  static String detailDescription= '/detailDiseaseDescription.dart';
+  static String diseaseDescription = '/diseaseDescription.dart';
 }

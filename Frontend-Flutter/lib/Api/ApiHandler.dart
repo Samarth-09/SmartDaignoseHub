@@ -5,7 +5,8 @@ import "package:dio/dio.dart";
 
 class ApiHandler {
   // String baseUrl = "https://smartdaignosehub-1.onrender.com";
-  String baseUrl = "http://192.168.1.10:3001";
+  // String baseUrl = "http://192.168.1.10:3001";
+  String baseUrl = "http://localhost:3001";
   Future<int> predictDiabetes(l) async {
     var res = await Dio()
         .post("$baseUrl/predict/diabetes",
@@ -67,7 +68,7 @@ class ApiHandler {
     // print(res.data['dieseasesHistory']['dateOfCheck']);
     List<disease> l = List.generate(res.data['dieseasesHistory'].length,
         (index) => disease.fromJson(res.data['dieseasesHistory'][index]));
-    print(l);
+    // print(l);
     l.sort((a, b) => -a.date.compareTo(b.date));
     return user(
         uname: res.data['uname'], email: res.data['email'], diseaseHistory: l);
