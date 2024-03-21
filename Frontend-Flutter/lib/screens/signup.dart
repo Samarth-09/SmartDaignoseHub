@@ -1,5 +1,5 @@
-import 'package:dieases_prediction/cubits/login/login_cubit.dart';
-import 'package:dieases_prediction/cubits/login/login_state.dart';
+import 'package:dieases_prediction/cubits/signup/signup_cubit.dart';
+import 'package:dieases_prediction/cubits/signup/signup_state.dart';
 import 'package:dieases_prediction/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,16 +9,17 @@ import 'package:dieases_prediction/commonWidgets.dart';
 import "package:dieases_prediction/globalVariables.dart";
 // import 'package:http/http.dart' as http;
 
-class login extends StatefulWidget {
-  const login({super.key});
+class signup extends StatefulWidget {
+  const signup({super.key});
 
   @override
-  State<login> createState() => _loginState();
+  State<signup> createState() => _signupState();
 }
 
-class _loginState extends State<login> {
+class _signupState extends State<signup> {
   TextEditingController email = TextEditingController();
   TextEditingController pwd = TextEditingController();
+  TextEditingController uname = TextEditingController();
   VideoPlayerController? controller;
   @override
   void initState() {
@@ -94,18 +95,30 @@ class _loginState extends State<login> {
                             size: (w / 100) * 7)),
                   ),
                   Container(
+                    margin: EdgeInsets.only(top: (h / 100) * 7),
+                    child: c.myInputField(
+                        w * 0.9,
+                        w,
+                        "Username",
+                        "uname",
+                        uname,
+                        Icon(Icons.person_2_outlined,
+                            color: const Color.fromARGB(255, 233, 236, 239),
+                            size: (w / 100) * 7)),
+                  ),
+                  Container(
                     margin:
                         EdgeInsets.only(top: (h / 100) * 7, right: w * 0.05),
                     child: BlocProvider(
-                      create: (context) => loginCubit(),
-                      child: BlocBuilder<loginCubit, loginState>(
+                      create: (context) => signupCubit(),
+                      child: BlocBuilder<signupCubit, signupState>(
                           builder: (context, state) {
-                        if (state is loginStateFilling) {
+                        if (state is signupStateFilling) {
                           return InkWell(
                             onTap: () {
                               context
-                                  .read<loginCubit>()
-                                  .submitted(email.text, pwd.text);
+                                  .read<signupCubit>()
+                                  .submitted(email.text, pwd.text, uname.text);
                             },
                             child: Align(
                               alignment: Alignment.bottomRight,
@@ -118,7 +131,7 @@ class _loginState extends State<login> {
                                         255, 206, 212, 218),
                                     borderRadius: BorderRadius.circular(10)),
                                 child: Text(
-                                  "Log In",
+                                  "Signup",
                                   style: GoogleFonts.getFont("Gowun Dodum")
                                       .copyWith(
                                           color: const Color.fromARGB(
@@ -130,9 +143,9 @@ class _loginState extends State<login> {
                             ),
                           );
                         } else {
-                          if (state is loginStateSubmitted) {
+                          if (state is signupStateSubmitted) {
                             getResult(state);
-                            context.read<loginCubit>().wrongCredentials();
+                            context.read<signupCubit>().wrongCredentials();
                           }
                           return Container(
                               padding: const EdgeInsets.all(10),
@@ -146,43 +159,42 @@ class _loginState extends State<login> {
                     ),
                   )
                 ])),
-        Positioned(
-            bottom: (w / 100) * 8,
-            child: InkWell(
-                // splashColor: null,
-                onTap: () async {
-                  await Navigator.pushNamed(context, routes.signup);
-                },
-                child: Container(
-                  width: w,
-                  alignment: Alignment.center,
-                  child: Text.rich(
-                    TextSpan(
-                      text: "Doesn't have Account? ",
-                      style: GoogleFonts.getFont("Gowun Dodum").copyWith(
-                          color: const Color.fromARGB(255, 33, 37, 41),
-                          fontSize: (w / 100) * 5,
-                          fontWeight: FontWeight.bold),
-                      children: <TextSpan>[
-                        TextSpan(
-                            text: 'SignUp',
-                            style: GoogleFonts.getFont("Gowun Dodum").copyWith(
-                                color: const Color.fromARGB(255, 33, 37, 41),
-                                fontSize: (w / 100) * 5,
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.underline)),
-                      ],
-                    ),
-                  ),
-                )))
+        // Positioned(
+        //     bottom: (w / 100) * 8,
+        //     child: InkWell(
+        //         // splashColor: null,
+        //         onTap: () {},
+        //         child: Container(
+        //           width: w,
+        //           alignment: Alignment.center,
+        //           child: Text.rich(
+        //             TextSpan(
+        //               text: "Doesn't have Account? ",
+        //               style: GoogleFonts.getFont("Gowun Dodum").copyWith(
+        //                   color: const Color.fromARGB(255, 33, 37, 41),
+        //                   fontSize: (w / 100) * 5,
+        //                   fontWeight: FontWeight.bold),
+        //               children: <TextSpan>[
+        //                 TextSpan(
+        //                     text: 'SignUp',
+        //                     style: GoogleFonts.getFont("Gowun Dodum").copyWith(
+        //                         color: const Color.fromARGB(255, 33, 37, 41),
+        //                         fontSize: (w / 100) * 5,
+        //                         fontWeight: FontWeight.bold,
+        //                         decoration: TextDecoration.underline)),
+        //               ],
+        //             ),
+        //           ),
+        //         )))
       ]),
     );
   }
 
   void getResult(state) async {
-    var result = await state.ah.login(state.email, state.pwd);
+    var result = await state.ah.signup(state.email, state.pwd, state.uname);
     if (result) {
-      await Navigator.popAndPushNamed(context, routes.selectDisease);
+      await Navigator.pushReplacementNamed(context, routes.selectDisease);
+      // await Navigator.popAndPushNamed(context, routes.selectDisease);
     } else {
       SnackBar s = SnackBar(
           backgroundColor: const Color.fromARGB(255, 206, 212, 218),

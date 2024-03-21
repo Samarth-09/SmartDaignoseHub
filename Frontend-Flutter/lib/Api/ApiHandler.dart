@@ -59,6 +59,26 @@ class ApiHandler {
     }
   }
 
+  Future<bool> signup(email, pwd, uname) async {
+    Map<String, dynamic> data = {
+      "uname": uname,
+      "pwd": pwd,
+      "email": email,
+      "feedBack": "",
+      "rating": 0,
+      "dieseasesHistory": []
+    };
+    var res = await Dio().post("$baseUrl/user/signup",
+        data: data, options: Options(headers: null));
+    if (res.data['msg'] is String) {
+      globalVariables.storeToken(res.data['msg']);
+      print(res.data['msg']);
+      return true;
+    } else {
+      return res.data['msg'];
+    }
+  }
+
   Future<user> getInfo() async {
     var res = await Dio().get("$baseUrl/user/info",
         options: Options(
@@ -66,10 +86,17 @@ class ApiHandler {
                 ? {"authorization": "Bearer ${globalVariables.token}"}
                 : null));
     // print(res.data['dieseasesHistory']['dateOfCheck']);
-    List<disease> l = List.generate(res.data['dieseasesHistory'].length,
-        (index) => disease.fromJson(res.data['dieseasesHistory'][index]));
+    List<disease> l;
+    // print(res.data['diseasesHistory']);
+    if (res.data['dieseasesHistory'] != null) {
+      l = List.generate(res.data['dieseasesHistory'].length,
+          (index) => disease.fromJson(res.data['dieseasesHistory'][index]));
+      l.sort((a, b) => -a.date.compareTo(b.date));
+    } else {
+      l = [];
+    }
     // print(l);
-    l.sort((a, b) => -a.date.compareTo(b.date));
+
     return user(
         uname: res.data['uname'], email: res.data['email'], diseaseHistory: l);
   }

@@ -47,19 +47,19 @@ router.get("/login", async (req, res) => {
   }
 });
 
-router.get("/signup", async (req, res) => {
+router.post("/signup", async (req, res) => {
   const userData = {
-    email: req.query.email,
+    email: req.body.email,
   };
-  // console.log(userData);
+  console.log(userData);
   generateToken(userData);
   const token = getToken();
   if (checkToken(token)) {
-    const result = await saveUser(userData);
-    //console.log(result);
+    const result = await saveUser(req.body);
+    console.log(result);
     if (result) {
       currentUser = result;
-      res.json(result);
+      res.json({msg: token});
     } else {
       res.json({ msg: false });
     }
