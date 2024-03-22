@@ -8,8 +8,8 @@ import {
 } from "../authentication/jwtHandler.js";
 import { updateUser } from "../mongo/mongoApi.js";
 const router = express.Router();
-// const baseUrl = "https://smartdaignosehub.onrender.com";
-const baseUrl = "http://127.0.0.1:5000";
+const baseUrl = "https://smartdaignosehub.onrender.com";
+// const baseUrl = "http://127.0.0.1:5000";
 router.post("/diabetes", async (req, res) => {
   if (req.headers.authorization != null) {
     var token = req.headers.authorization.split(" ")[1];
